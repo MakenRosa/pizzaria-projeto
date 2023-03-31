@@ -1,0 +1,45 @@
+.button{
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 80% 80%;
+    -fx-background-color: rgb(145, 145, 145);
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+
+.button:hover{
+    -fx-background-color: linear-gradient(#b9b9b9, #9b9999);
+    -fx-translate-y: -2px;
+    -fx-translate-x: -2px;
+    -fx-text-shadow: 1px 1px 1px;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.5) , 5, 0.0 , 0 , 1 );
+}
+
+#btn_cad_cliente{
+    -fx-background-image: url("../images/add-user.png");
+}
+
+#btn_search_cliente{
+    -fx-background-image: url("../images/search-user.png");
+}
+
+#btn_cad_pedido{
+    -fx-background-image: url("../images/add-pedido.png");
+}
+
+#btn_search_pedido{
+    -fx-background-image: url("../images/search-pedido.png");
+}
+
+#btn_sair{
+    -fx-background-image: url("../images/sair.png");
+}
+
+.background {
+    -fx-background-color: rgba(255, 255, 255, 0.37);
+    -fx-background-image: url("../images/backgroundw.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+    -fx-effect: blend(multiply, rgb(0, 0, 0));
+}
