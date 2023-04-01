@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Truen
+ * @author Maken
  */
 public class JavaFXTeste extends Application {
     
