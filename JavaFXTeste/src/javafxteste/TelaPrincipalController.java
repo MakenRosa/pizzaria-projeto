@@ -24,6 +24,9 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private Button btnVender;
 
+    @FXML
+    private Button btnAddPedido;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         varVendidasTotal.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -31,7 +34,6 @@ public class TelaPrincipalController implements Initializable {
                 abrirPopUp();
             }
         });
-
     }
 
     @FXML
@@ -48,4 +50,16 @@ public class TelaPrincipalController implements Initializable {
         alert.setContentText("Você atingiu o limite de 200 vendas grátis! A partir de agora, você terá que pagar para continuar vendendo!");
         alert.showAndWait();
     }
+
+    @FXML
+    private void btnAddPedidoOnAction(ActionEvent event) {
+        JavaFXTeste.abrirTela("CadastroPedido");
+    }
+
+    public void incrementarContador(int quantidade) {
+        int vendidas = Integer.parseInt(varVendidasTotal.getText());
+        vendidas += quantidade;
+        varVendidasTotal.setText(String.valueOf(vendidas));
+    }
+    
 }

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.web.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
@@ -51,7 +50,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button id="btn_cad_pedido" fx:id="btnAddPedido" alignment="CENTER" contentDisplay="TOP" layoutX="325.0" layoutY="227.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="btn" stylesheets="@style.css" textAlignment="CENTER" wrapText="true">
+            <Button id="btn_cad_pedido" fx:id="btnAddPedido" alignment="CENTER" contentDisplay="TOP" layoutX="325.0" layoutY="227.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="btn" stylesheets="@style.css" textAlignment="CENTER" wrapText="true" onAction="#btnAddPedidoOnAction">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -80,7 +79,6 @@
             <Label fx:id="lblVendidasTotal" alignment="CENTER" layoutX="14.0" layoutY="422.0" text="Total Vendidas:" />
             <Label fx:id="varVendidasHoje" layoutX="101.0" layoutY="394.0" text="0" />
             <Label fx:id="varVendidasTotal" layoutX="101.0" layoutY="422.0" text="190" />
-            <Button fx:id="btnVender" layoutX="134.0" layoutY="418.0" mnemonicParsing="false" onAction="#vender" text="Button" />
          </children>
       </Pane>
    </children>
