@@ -49,5 +49,18 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-size: cover;
-    -fx-effect: blend(multiply, rgb(0, 0, 0));
+}
+
+.titulo {
+    -fx-font-weight: bold;
+    -fx-font-size: 26px;
+}
+
+.campo {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-color: rgba(155, 155, 155, 0.568);
+    -fx-border-color: rgba(0, 0, 0, 0.37);
+    -fx-padding: 5px;
+    -fx-border-radius: 5px 5px 0px 0px;
 }
