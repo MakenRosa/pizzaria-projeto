@@ -22,10 +22,13 @@ public class TelaPrincipalController implements Initializable {
     private Label varVendidasTotal;
 
     @FXML
-    private Button btnVender;
+    private Label varVendidasHoje;
 
     @FXML
     private Button btnAddPedido;
+
+    @FXML 
+    private Button btnSair;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -34,13 +37,6 @@ public class TelaPrincipalController implements Initializable {
                 abrirPopUp();
             }
         });
-    }
-
-    @FXML
-    private void vender(ActionEvent event) {
-        int vendidas = Integer.parseInt(varVendidasTotal.getText());
-        vendidas++;
-        varVendidasTotal.setText(String.valueOf(vendidas));
     }
 
     private void abrirPopUp() {
@@ -52,14 +48,21 @@ public class TelaPrincipalController implements Initializable {
     }
 
     @FXML
-    private void btnAddPedidoOnAction(ActionEvent event) {
+    private void addPedidoOnAction(ActionEvent event) {
         JavaFXTeste.abrirTela("CadastroPedido");
     }
 
     public void incrementarContador(int quantidade) {
-        int vendidas = Integer.parseInt(varVendidasTotal.getText());
-        vendidas += quantidade;
-        varVendidasTotal.setText(String.valueOf(vendidas));
+        int vendidasTotal = Integer.parseInt(varVendidasTotal.getText());
+        int vendidasHoje = Integer.parseInt(varVendidasHoje.getText());
+        vendidasTotal += quantidade;
+        vendidasHoje += quantidade;
+        varVendidasTotal.setText(String.valueOf(vendidasTotal));
+        varVendidasHoje.setText(String.valueOf(vendidasHoje));
     }
     
+    @FXML
+    private void sairOnAction(ActionEvent event) {
+        System.exit(0);
+    }
 }

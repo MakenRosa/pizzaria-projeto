@@ -1,7 +1,5 @@
 package javafxteste;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
 import javafx.fxml.FXML;
@@ -12,7 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafxteste.TelaPrincipalController;
 import javafx.stage.Stage;
 
 
@@ -93,7 +90,6 @@ public class CadastroPedidoController {
             }
             return null;
         }));
-
     }
 
     @FXML

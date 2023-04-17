@@ -33,6 +33,7 @@ public class JavaFXTeste extends Application {
         
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
     }
 
     /**
@@ -42,6 +43,7 @@ public class JavaFXTeste extends Application {
         launch(args);
     }
 
+
     public static void abrirTela(String nomeTela) {
         try {
             Parent root = FXMLLoader.load(JavaFXTeste.class.getResource(nomeTela + ".fxml"));
@@ -49,6 +51,7 @@ public class JavaFXTeste extends Application {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
+            stage.setResizable(false);
             telasAbertas.add(stage);
         } catch (IOException e) {
             e.printStackTrace();
