@@ -1,7 +1,6 @@
 package javafxteste;
 
 import java.util.regex.Pattern;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,8 +10,8 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
-
-
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 public class CadastroPedidoController {
 
@@ -76,20 +75,54 @@ public class CadastroPedidoController {
     @FXML
     private RadioButton radioDebito;
 
+    private void applyPhoneMask(TextField textField) {
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                textField.setText(formatPhone(oldValue, newValue));
+                textField.positionCaret(textField.getText().length());
+            }
+        });
+    }
+
+    private void applyDateMask(TextField textField) {
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                textField.setText(formatDate(oldValue, newValue));
+                textField.positionCaret(textField.getText().length());
+            }
+        });
+    }
+
+    private void applyNameMask(TextField textField) {
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("[a-zA-ZÀ-ú\\s]{0,50}")) {
+                    textField.setText(oldValue);
+                }
+            }
+        });
+    }
+
+    private void applyValueMask(TextField textField) {
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*(\\,\\d{0,2})?")) {
+                    textField.setText(oldValue);
+                }
+            }
+        });
+    }
+
     @FXML
     private void initialize() {
-        // Permitir de 0 a 11 dígitos no campo de telefone os quais serão formatados com
-        // máscara de telefone (xx)xxxxx-xxxx
-        telefoneClienteField.setTextFormatter(new TextFormatter<>(change -> {
-            if (change.getControlNewText().isEmpty()) {
-                return change;
-            }
-            Pattern pattern = Pattern.compile("\\d{0,11}");
-            if (pattern.matcher(change.getControlNewText()).matches()) {
-                return change;
-            }
-            return null;
-        }));
+        applyPhoneMask(telefoneClienteField);
+        applyDateMask(dataPedidoField);
+        applyNameMask(nomeClienteField);
+        applyValueMask(valorPedidoField);
     }
 
     @FXML
@@ -105,6 +138,15 @@ public class CadastroPedidoController {
     }
 
     private Boolean validarCampos() {
+        // Validação do campo nomeClienteField
+        if (nomeClienteField.getText().trim().isEmpty() || !validateName(nomeClienteField.getText().trim())) {
+            return false;
+        }
+
+        // Validação do campo valorPedidoField
+        if (valorPedidoField.getText().trim().isEmpty() || !validateValue(valorPedidoField.getText().trim())) {
+            return false;
+        }
         if (valorPedidoField.getText().trim().isEmpty()) {
             return false;
         } else {
@@ -118,6 +160,39 @@ public class CadastroPedidoController {
             return false;
         }
         return true;
+    }
+
+    private String formatPhone(String oldValue, String newValue) {
+        String formatted = newValue.replaceAll("[^0-9]", "");
+        if (formatted.length() > 2) {
+            formatted = "(" + formatted.substring(0, 2) + ")" + formatted.substring(2);
+        }
+        if (formatted.length() > 6) {
+            formatted = formatted.substring(0, 5) + " " + formatted.substring(5);
+        }
+        if (formatted.length() > 12) {
+            formatted = formatted.substring(0, 10) + "-" + formatted.substring(10);
+        }
+        return formatted.length() > 15 ? oldValue : formatted;
+    }
+
+    private String formatDate(String oldValue, String newValue) {
+        String formatted = newValue.replaceAll("[^0-9]", "");
+        if (formatted.length() > 2) {
+            formatted = formatted.substring(0, 2) + "/" + formatted.substring(2);
+        }
+        if (formatted.length() > 5) {
+            formatted = formatted.substring(0, 5) + "/" + formatted.substring(5);
+        }
+        return formatted.length() > 10 ? oldValue : formatted;
+    }
+
+    private boolean validateName(String name) {
+        return name.matches("^[a-zA-ZÀ-ú]+(\\s[a-zA-ZÀ-ú]+)*$");
+    }
+
+    private boolean validateValue(String value) {
+        return value.matches("^\\d+(\\.\\d{1,2})?$");
     }
 
 }
