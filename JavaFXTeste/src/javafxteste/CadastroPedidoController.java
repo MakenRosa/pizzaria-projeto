@@ -1,17 +1,23 @@
 package javafxteste;
 
-import java.util.regex.Pattern;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 
 public class CadastroPedidoController {
 
@@ -20,6 +26,33 @@ public class CadastroPedidoController {
 
     @FXML
     private Label tituloLabel;
+
+    @FXML
+    private RadioButton brotoRadioButton;
+
+    @FXML
+    private RadioButton grandeRadioButton;
+
+    @FXML
+    private RadioButton giganteRadioButton;
+
+    @FXML
+    private ComboBox<String> saboresPizzaComboBox;
+
+    @FXML
+    private TextArea descricaoSaborTextArea;
+
+    @FXML
+    private ComboBox<String> bordaPizzaComboBox;
+
+    @FXML
+    private Spinner<Integer> quantidadePizzaSpinner;
+
+    @FXML
+    private CheckBox retiradaBalcaoCheckBox;
+
+    @FXML
+    private ComboBox<String> bebidaComboBox;
 
     @FXML
     private Label nomeClienteLabel;
@@ -123,6 +156,59 @@ public class CadastroPedidoController {
         applyDateMask(dataPedidoField);
         applyNameMask(nomeClienteField);
         applyValueMask(valorPedidoField);
+        applyValueMask(valorTotalPedidoField);
+        applyPizzaValues();
+        applyBordaValues();
+        applyBebidaValues();
+        applyDescSaboresValues();
+        quantidadePizzaSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1));
+
+    }
+
+    private void applyDescSaboresValues() {
+        saboresPizzaComboBox.setOnAction((event) -> {
+            String saborSelecionado = saboresPizzaComboBox.getValue();
+            switch (saborSelecionado) {
+                case "Mussarela":
+                    descricaoSaborTextArea.setText("Sabor clássico da pizza, com queijo mussarela e molho de tomate.");
+                    break;
+                case "Calabresa":
+                    descricaoSaborTextArea
+                            .setText("Pizza com fatias de calabresa, queijo mussarela e molho de tomate.");
+                    break;
+                case "Margherita":
+                    descricaoSaborTextArea.setText("Pizza com molho de tomate, queijo mussarela e manjericão.");
+                    break;
+                case "Frango com Catupiry":
+                    descricaoSaborTextArea
+                            .setText("Pizza com pedaços de frango e catupiry, queijo mussarela e molho de tomate.");
+                    break;
+                case "Quatro Queijos":
+                    descricaoSaborTextArea.setText("Pizza com queijos mussarela, parmesão, gorgonzola e catupiry.");
+                    break;
+                default:
+                    descricaoSaborTextArea.setText("");
+                    break;
+            }
+        });
+    }
+
+    private void applyBebidaValues() {
+        // Adiciona as opções de bebida na ComboBox bebidaComboBox
+        bebidaComboBox.setItems(FXCollections.observableArrayList(
+                "Coca-Cola", "Fanta", "Sprite", "Guaraná", "Água mineral", "Suco de laranja"));
+    }
+
+    private void applyBordaValues() {
+        // Adiciona as opções de borda na ComboBox bordaPizzaComboBox
+        bordaPizzaComboBox.setItems(FXCollections.observableArrayList(
+                "Sem borda", "Catupiry", "Cheddar", "Cream cheese"));
+    }
+
+    private void applyPizzaValues() {
+        // Adiciona os sabores de pizza na ComboBox saboresPizzaComboBox
+        saboresPizzaComboBox.setItems(FXCollections.observableArrayList(
+                "Mussarela", "Calabresa", "Margherita", "Frango com Catupiry", "Quatro Queijos"));
     }
 
     @FXML
@@ -135,6 +221,13 @@ public class CadastroPedidoController {
             stage.close();
         }
 
+    }
+
+    @FXML
+    private void fecharJanela(ActionEvent event) {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
     private Boolean validarCampos() {

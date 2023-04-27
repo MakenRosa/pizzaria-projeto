@@ -1,23 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML2.java to edit this template
- */
 package javafxteste;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-/**
- *
- * @author Maken
- */
-public class TelaPrincipalController implements Initializable {
+public class TelaPrincipalController {
+
     @FXML
     private Label varVendidasTotal;
 
@@ -27,11 +18,13 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private Button btnAddPedido;
 
-    @FXML 
+    @FXML
+    private Button btnPesqPedido;
+
+    @FXML
     private Button btnSair;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize() {
         varVendidasTotal.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.equals("200")) {
                 abrirPopUp();
@@ -43,13 +36,19 @@ public class TelaPrincipalController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");
         alert.setHeaderText("Limite grátis atingido! Parabéns!!!");
-        alert.setContentText("Você atingiu o limite de 200 vendas grátis! A partir de agora, você terá que pagar para continuar vendendo!");
+        alert.setContentText(
+                "Você atingiu o limite de 200 vendas grátis! A partir de agora, você terá que pagar para continuar vendendo!");
         alert.showAndWait();
     }
 
     @FXML
     private void addPedidoOnAction(ActionEvent event) {
-        JavaFXTeste.abrirTela("CadastroPedido");
+        WindowManager.openWindow("CadastroPedido");
+    }
+
+    @FXML
+    private void pesqPedidoOnAction(ActionEvent event) {
+        WindowManager.openWindow("PesquisaPedido");
     }
 
     public void incrementarContador(int quantidade) {
@@ -60,9 +59,10 @@ public class TelaPrincipalController implements Initializable {
         varVendidasTotal.setText(String.valueOf(vendidasTotal));
         varVendidasHoje.setText(String.valueOf(vendidasHoje));
     }
-    
+
     @FXML
     private void sairOnAction(ActionEvent event) {
-        System.exit(0);
+        WindowManager.closeAllWindows();
+        Platform.exit();
     }
 }

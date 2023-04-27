@@ -24,7 +24,7 @@
             <Menu fx:id="menuPedido" mnemonicParsing="false" text="Pedido">
               <items>
                 <MenuItem fx:id="criarPedido" mnemonicParsing="false" onAction="#addPedidoOnAction" text="Criar" />
-                  <MenuItem fx:id="pesquisaPedido" mnemonicParsing="false" text="Pesquisar" />
+                  <MenuItem fx:id="pesquisaPedido" mnemonicParsing="false" text="Pesquisar" onAction="#pesqPedidoOnAction" />
               </items>
             </Menu>
           <Menu fx:id="menuSair" mnemonicParsing="false" text="Sair">
@@ -54,7 +54,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button id="btn_search_pedido" fx:id="btnPesquisaPedido" alignment="CENTER" contentDisplay="TOP" layoutX="555.0" layoutY="325.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="btn_tela_principal" stylesheets="@style.css" textAlignment="CENTER" wrapText="true">
+      <Button id="btn_search_pedido" fx:id="btnPesquisaPedido" alignment="CENTER" contentDisplay="TOP" layoutX="555.0" layoutY="325.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="btn_tela_principal" stylesheets="@style.css" textAlignment="CENTER" wrapText="true" onAction="#pesqPedidoOnAction">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
