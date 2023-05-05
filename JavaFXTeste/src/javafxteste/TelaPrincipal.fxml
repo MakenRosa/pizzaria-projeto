@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxteste.TelaPrincipalController">
+   <children>
+      <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="900.0">
+        <menus>
+          <Menu fx:id="menuCliente" mnemonicParsing="false" text="Cliente">
+            <items>
+              <MenuItem fx:id="clienteCadastro" mnemonicParsing="false" text="Cadastrar" />
+                  <MenuItem fx:id="clientePesquisa" mnemonicParsing="false" text="Pesquisar" />
+            </items>
+          </Menu>
+            <Menu fx:id="menuPedido" mnemonicParsing="false" text="Pedido">
+              <items>
+                <MenuItem fx:id="criarPedido" mnemonicParsing="false" onAction="#addPedidoOnAction" text="Criar" />
+                  <MenuItem fx:id="pesquisaPedido" mnemonicParsing="false" text="Pesquisar" onAction="#pesqPedidoOnAction" />
+              </items>
+            </Menu>
+          <Menu fx:id="menuSair" mnemonicParsing="false" text="Sair">
+            <items>
+              <MenuItem fx:id="sair" mnemonicParsing="false" onAction="#sairOnAction" text="Sair" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label fx:id="lblTitulo" layoutX="304.0" layoutY="102.0" styleClass="titulo" text="Pizzaria Topzera">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Button id="btn_cad_cliente" fx:id="btnCadastroCliente" alignment="CENTER" contentDisplay="TOP" layoutX="346.0" layoutY="325.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="btn_tela_principal" stylesheets="@style.css" textAlignment="CENTER" wrapText="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button id="btn_search_cliente" fx:id="btnPesquisaCliente" alignment="CENTER" contentDisplay="TOP" layoutX="416.0" layoutY="325.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="btn_tela_principal" stylesheets="@style.css" textAlignment="CENTER" wrapText="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button id="btn_cad_pedido" fx:id="btnAddPedido" alignment="CENTER" contentDisplay="TOP" layoutX="485.0" layoutY="325.0" mnemonicParsing="false" onAction="#addPedidoOnAction" prefHeight="70.0" prefWidth="70.0" styleClass="btn_tela_principal" stylesheets="@style.css" textAlignment="CENTER" wrapText="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button id="btn_search_pedido" fx:id="btnPesquisaPedido" alignment="CENTER" contentDisplay="TOP" layoutX="555.0" layoutY="325.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="btn_tela_principal" stylesheets="@style.css" textAlignment="CENTER" wrapText="true" onAction="#pesqPedidoOnAction">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button id="btn_sair" fx:id="btnSair" alignment="CENTER" contentDisplay="TOP" layoutX="625.0" layoutY="325.0" mnemonicParsing="false" onAction="#sairOnAction" prefHeight="70.0" prefWidth="70.0" styleClass="btn_tela_principal" stylesheets="@style.css" textAlignment="CENTER" wrapText="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="lblCadCliente" alignment="CENTER" layoutX="346.0" layoutY="395.0" prefHeight="34.0" prefWidth="70.0" styleClass="lbl_btn_principal" text="Cadastrar Cliente" textAlignment="CENTER" wrapText="true" />
+      <Label id="user_label" fx:id="lblUsuario" layoutX="37.0" layoutY="65.0" stylesheets="@style.css" text="Usuário: ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPesqCliente" alignment="CENTER" layoutX="416.0" layoutY="395.0" prefHeight="34.0" prefWidth="70.0" styleClass="lbl_btn_principal" text="Pesquisar Cliente" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="lblCadPedido" alignment="CENTER" layoutX="485.0" layoutY="395.0" prefHeight="34.0" prefWidth="70.0" styleClass="lbl_btn_principal" text="Cadastrar Pedido" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="lblPesqPedido" alignment="CENTER" layoutX="555.0" layoutY="395.0" prefHeight="34.0" prefWidth="70.0" styleClass="lbl_btn_principal" text="Pesquisar Pedido" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="lblSair" alignment="CENTER" layoutX="625.0" layoutY="395.0" prefHeight="11.0" prefWidth="70.0" styleClass="lbl_btn_principal" text="Sair" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="varVendidasHoje" layoutX="22.0" layoutY="509.0" styleClass="contador_vendidas" stylesheets="@style.css" text="0">
+         <graphic>
+            <Label fx:id="lblVendidasHoje" alignment="CENTER" text="Vendidas Hoje:" />
+         </graphic>
+      </Label>
+      <Label fx:id="varVendidasTotal" layoutX="22.0" layoutY="554.0" styleClass="contador_vendidas" text="190">
+         <graphic>
+            <Label fx:id="lblVendidasTotal" alignment="CENTER" text="Total Vendidas:" />
+         </graphic>
+      </Label>
+   </children>
+</AnchorPane>

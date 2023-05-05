@@ -1,36 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML.java to edit this template
- */
 package javafxteste;
-
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Maken
- */
 public class JavaFXTeste extends Application {
-    
+
+    private static TelaPrincipalController telaPrincipalController;
+
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("TelaPrincipal.fxml"));
+        Parent root = loader.load();
+        telaPrincipalController = loader.getController();
+
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
+
+        // Adicionar evento de fechamento de janela
+        stage.setOnCloseRequest(event -> {
+            WindowManager.closeAllWindows();
+            Platform.exit();
+        });
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }
-    
+
+    public static TelaPrincipalController getTelaPrincipalController() {
+        return telaPrincipalController;
+    }
+
+    public static void setTelaPrincipalController(TelaPrincipalController telaPrincipalController) {
+        JavaFXTeste.telaPrincipalController = telaPrincipalController;
+    }
 }
