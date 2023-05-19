@@ -50,6 +50,16 @@ public class TelaPrincipalController {
     private void pesqPedidoOnAction(ActionEvent event) {
         WindowManager.openWindow("PesquisaPedido");
     }
+    
+      @FXML
+    private void addClienteOnAction(ActionEvent event) {
+        WindowManager.openWindow("CadastroCliente");
+    }
+    
+     @FXML
+    private void pesqClienteOnAction(ActionEvent event) {
+        WindowManager.openWindow("PesquisaCliente");
+    }
 
     public void incrementarContador(int quantidade) {
         int vendidasTotal = Integer.parseInt(varVendidasTotal.getText());

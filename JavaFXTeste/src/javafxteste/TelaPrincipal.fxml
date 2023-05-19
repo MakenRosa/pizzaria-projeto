@@ -17,8 +17,8 @@
         <menus>
           <Menu fx:id="menuCliente" mnemonicParsing="false" text="Cliente">
             <items>
-              <MenuItem fx:id="clienteCadastro" mnemonicParsing="false" text="Cadastrar" />
-                  <MenuItem fx:id="clientePesquisa" mnemonicParsing="false" text="Pesquisar" />
+              <MenuItem fx:id="clienteCadastro" mnemonicParsing="false" onAction="#addClienteOnAction" text="Cadastrar" />
+                  <MenuItem fx:id="clientePesquisa" mnemonicParsing="false" onAction="#pesqClienteOnAction" text="Pesquisar" />
             </items>
           </Menu>
             <Menu fx:id="menuPedido" mnemonicParsing="false" text="Pedido">
@@ -39,12 +39,12 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Button id="btn_cad_cliente" fx:id="btnCadastroCliente" alignment="CENTER" contentDisplay="TOP" layoutX="346.0" layoutY="325.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="btn_tela_principal" stylesheets="@style.css" textAlignment="CENTER" wrapText="true">
+      <Button id="btn_cad_cliente" fx:id="btnCadastroCliente" alignment="CENTER" contentDisplay="TOP" layoutX="346.0" layoutY="325.0" mnemonicParsing="false" onAction="#addClienteOnAction" prefHeight="70.0" prefWidth="70.0" styleClass="btn_tela_principal" stylesheets="@style.css" textAlignment="CENTER" wrapText="true">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button id="btn_search_cliente" fx:id="btnPesquisaCliente" alignment="CENTER" contentDisplay="TOP" layoutX="416.0" layoutY="325.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="70.0" styleClass="btn_tela_principal" stylesheets="@style.css" textAlignment="CENTER" wrapText="true">
+      <Button id="btn_search_cliente" fx:id="btnPesquisaCliente" alignment="CENTER" contentDisplay="TOP" layoutX="416.0" layoutY="325.0" mnemonicParsing="false" onAction="#pesqClienteOnAction" prefHeight="70.0" prefWidth="70.0" styleClass="btn_tela_principal" stylesheets="@style.css" textAlignment="CENTER" wrapText="true">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

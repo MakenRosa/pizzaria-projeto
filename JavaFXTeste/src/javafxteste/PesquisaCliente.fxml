@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+    prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@style.css"
+    xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="javafxteste.PesquisaClienteController">
+    <children>
+        <Label layoutX="111.0" layoutY="50.0" styleClass="titulo" text="Pesquisa de Clientes">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <!-- Campo de pesquisa -->
+        <Label layoutX="56.0" layoutY="126.0" styleClass="campo" text="Digite o nome ou telefone do cliente:" />
+        <TextField fx:id="buscaClienteField" layoutX="56.0" layoutY="151.0" prefWidth="688.0" />
+        <Button fx:id="buscarButton" layoutX="744.0" layoutY="151.0" mnemonicParsing="false"
+            onAction="#buscarCliente" text="Pesquisar" />
+
+        <!-- Resultados da pesquisa -->
+        <Label layoutX="56.0" layoutY="196.0" styleClass="campo" text="Resultados da pesquisa:" />
+
+        <!-- Tabela de resultados -->
+        <TableView fx:id="listaClientes" layoutX="56.0" layoutY="221.0" prefHeight="329.0" prefWidth="788.0">
+            <columns>
+                <TableColumn fx:id="colunaNome" text="Nome" prefWidth="200.0" />
+                <TableColumn fx:id="colunaTelefone" text="Telefone" prefWidth="200.0" />
+                <TableColumn fx:id="colunaEmail" text="E-mail" prefWidth="388.0" />
+            </columns>
+        </TableView>
+        
+        <!-- Botões -->
+        <Button fx:id="fecharButton" layoutX="56.0" layoutY="556.0" mnemonicParsing="false" text="Fechar" onAction="#fecharJanela" />
+        <Button fx:id="pesquisaAvancadaButton" layoutX="744.0" layoutY="556.0" mnemonicParsing="false" text="Pesquisa Avançada" />
+
+    </children>
+</AnchorPane>
