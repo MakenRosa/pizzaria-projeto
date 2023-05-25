@@ -1,49 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="479.0" styleClass="background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxteste.CadastroPedidoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+    prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@style.css"
+    xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="javafxteste.CadastroPedidoController">
     <children>
         <Label layoutX="111.0" layoutY="50.0" styleClass="titulo" text="Cadastro de Pedido">
             <font>
                 <Font size="24.0" />
             </font>
         </Label>
-        <Label layoutX="56.0" layoutY="126.0" styleClass="campo" text="Nome do Cliente:" />
-        <TextField fx:id="nomeClienteField" layoutX="56.0" layoutY="151.0" prefWidth="350.0" />
-        <Label layoutX="56.0" layoutY="196.0" styleClass="campo" text="Telefone do Cliente (com DDD):" />
-        <TextField fx:id="telefoneClienteField" layoutX="56.0" layoutY="221.0" prefWidth="350.0" />
-        <Label layoutX="56.0" layoutY="266.0" styleClass="campo" text="* Valor do Pedido (R$):" />
-        <TextField fx:id="valorPedidoField" layoutX="56.0" layoutY="291.0" prefWidth="350.0" />
-        <Label layoutX="56.0" layoutY="336.0" styleClass="campo" text="* Data do Pedido:" />
-        <TextField fx:id="dataPedidoField" layoutX="56.0" layoutY="361.0" prefWidth="350.0" promptText="dd/mm/aaaa" />
-        <Label layoutX="56.0" layoutY="406.0" styleClass="campo" text="Forma de Pagamento:" />
-        <Label layoutX="56.0" layoutY="476.0" styleClass="campo" text="Valor Total do Pedido (R$):" />
-        <TextField fx:id="valorTotalPedidoField" layoutX="56.0" layoutY="501.0" prefWidth="350.0" />
-        <RadioButton fx:id="radioDinheiro" layoutX="56.0" layoutY="438.0" mnemonicParsing="false" text="Dinheiro">
+        <!-- Tamanho da pizza -->
+        <Label layoutX="56.0" layoutY="126.0" styleClass="campo" text="Tamanho da Pizza:" />
+        <RadioButton fx:id="broto" layoutX="56.0" layoutY="168.0" mnemonicParsing="false"
+            text="Broto">
+            <toggleGroup>
+                <ToggleGroup fx:id="tamanhoPizza" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="grande" layoutX="116.0" layoutY="168.0" mnemonicParsing="false"
+            text="Grande" toggleGroup="$tamanhoPizza" />
+        <RadioButton fx:id="gigante" layoutX="186.0" layoutY="168.0" mnemonicParsing="false"
+            text="Gigante" toggleGroup="$tamanhoPizza" />
+
+        <!-- Sabores da pizza -->
+        <Label layoutX="56.0" layoutY="196.0" styleClass="campo" text="Sabores da Pizza:" />
+        <ComboBox fx:id="saboresPizzaComboBox" layoutX="56.0" layoutY="221.0" prefWidth="350.0" />
+        <TextArea fx:id="descricaoSaborTextArea" layoutX="56.0" layoutY="256.0" prefHeight="80.0"
+            prefWidth="350.0" editable="false" wrapText="true" />
+
+        <!-- Borda da pizza -->
+        <Label layoutX="56.0" layoutY="351.0" styleClass="campo" text="Borda:" />
+        <ComboBox fx:id="bordaPizzaComboBox" layoutX="56.0" layoutY="376.0" prefWidth="350.0" />
+
+        <!-- Quantidade de pizza -->
+        <Label layoutX="56.0" layoutY="426.0" styleClass="campo" text="Quantidade de Pizza:" />
+        <Spinner fx:id="quantidadePizzaSpinner" layoutX="56.0" layoutY="455.0" prefWidth="100.0" />
+
+        <!-- Retirada no balcão -->
+        <CheckBox fx:id="retiradaBalcaoCheckBox" layoutX="56.0" layoutY="496.0" mnemonicParsing="false"
+            text="Retirar pizza no balcão" />
+        <!-- Bebida -->
+        <Label layoutX="56.0" layoutY="541.0" styleClass="campo" text="Bebida:" />
+        <ComboBox fx:id="bebidaComboBox" layoutX="56.0" layoutY="566.0" prefWidth="350.0"/>
+
+        <!-- Campos originais -->
+        <Label layoutX="450.0" layoutY="126.0" styleClass="campo" text="Nome do Cliente:" />
+        <TextField fx:id="nomeClienteField" layoutX="450.0" layoutY="151.0" prefWidth="350.0" />
+        <Label layoutX="450.0" layoutY="196.0" styleClass="campo"
+            text="Telefone do Cliente (com DDD):" />
+        <TextField fx:id="telefoneClienteField" layoutX="450.0" layoutY="221.0" prefWidth="350.0" promptText="(99)9 9999-9999" />
+        <Label layoutX="450.0" layoutY="266.0" styleClass="campo" text="* Valor do Pedido (R$):" />
+        <TextField fx:id="valorPedidoField" layoutX="450.0" layoutY="291.0" prefWidth="350.0" />
+        <Label layoutX="450.0" layoutY="336.0" styleClass="campo" text="* Data do Pedido:" />
+        <TextField fx:id="dataPedidoField" layoutX="450.0" layoutY="361.0" prefWidth="350.0"
+            promptText="dd/mm/aaaa" />
+        <Label layoutX="450.0" layoutY="406.0" styleClass="campo" text="Forma de Pagamento:" />
+        <Label layoutX="450.0" layoutY="476.0" styleClass="campo" text="Valor Total do Pedido (R$):" />
+        <TextField fx:id="valorTotalPedidoField" layoutX="450.0" layoutY="501.0" prefWidth="350.0" />
+        <RadioButton fx:id="radioDinheiro" layoutX="450.0" layoutY="438.0" mnemonicParsing="false"
+            text="Dinheiro">
             <toggleGroup>
                 <ToggleGroup fx:id="formaPagamento" />
             </toggleGroup>
         </RadioButton>
-        <RadioButton fx:id="radioPix" layoutX="132.0" layoutY="438.0" mnemonicParsing="false" text="Pix" toggleGroup="$formaPagamento" />
-        <RadioButton fx:id="radioCredito" layoutX="177.0" layoutY="438.0" mnemonicParsing="false" text="Crédito" toggleGroup="$formaPagamento">
+        <RadioButton fx:id="radioPix" layoutX="526.0" layoutY="438.0" mnemonicParsing="false"
+            text="Pix" toggleGroup="$formaPagamento" />
+        <RadioButton fx:id="radioCredito" layoutX="571.0" layoutY="438.0" mnemonicParsing="false"
+            text="Crédito" toggleGroup="$formaPagamento">
             <tooltip>
-                <Tooltip text="Aceitamos cartões de crédito das bandeiras Visa, Mastercard e American Express" />
+                <Tooltip
+                    text="Aceitamos cartões de crédito das bandeiras Visa, Mastercard e American Express" />
             </tooltip>
         </RadioButton>
-
-        <RadioButton fx:id="radioDebito" layoutX="248.0" layoutY="438.0" mnemonicParsing="false" text="Débito" toggleGroup="$formaPagamento">
+        <RadioButton fx:id="radioDebito" layoutX="642.0" layoutY="438.0" mnemonicParsing="false"
+            text="Débito" toggleGroup="$formaPagamento">
             <tooltip>
-                <Tooltip text="Aceitamos cartões de débito das bandeiras Visa Electron, Maestro e Elo" />
+                <Tooltip
+                    text="Aceitamos cartões de débito das bandeiras Visa Electron, Maestro e Elo" />
             </tooltip>
         </RadioButton>
-        <Button fx:id="cadastrarButton" layoutX="178.0" layoutY="551.0" mnemonicParsing="false" onAction="#cadastrarPedido" text="Cadastrar Pedido" />
+        <Button fx:id="fecharButton" layoutX="450.0" layoutY="566.0" mnemonicParsing="false"
+            onAction="#fecharJanela" text="Cancelar Pedido" />
+        <Button fx:id="cadastrarButton" layoutX="650.0" layoutY="566.0" mnemonicParsing="false"
+            onAction="#cadastrarPedido" text="Cadastrar Pedido" />
     </children>
 </AnchorPane>

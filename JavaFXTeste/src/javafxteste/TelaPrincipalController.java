@@ -1,34 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML2.java to edit this template
- */
 package javafxteste;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-/**
- *
- * @author Maken
- */
-public class TelaPrincipalController implements Initializable {
+public class TelaPrincipalController {
+
     @FXML
     private Label varVendidasTotal;
 
     @FXML
-    private Button btnVender;
+    private Label varVendidasHoje;
 
     @FXML
     private Button btnAddPedido;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    @FXML
+    private Button btnPesqPedido;
+
+    @FXML
+    private Button btnSair;
+
+    public void initialize() {
         varVendidasTotal.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.equals("200")) {
                 abrirPopUp();
@@ -36,30 +32,37 @@ public class TelaPrincipalController implements Initializable {
         });
     }
 
-    @FXML
-    private void vender(ActionEvent event) {
-        int vendidas = Integer.parseInt(varVendidasTotal.getText());
-        vendidas++;
-        varVendidasTotal.setText(String.valueOf(vendidas));
-    }
-
     private void abrirPopUp() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informação");
         alert.setHeaderText("Limite grátis atingido! Parabéns!!!");
-        alert.setContentText("Você atingiu o limite de 200 vendas grátis! A partir de agora, você terá que pagar para continuar vendendo!");
+        alert.setContentText(
+                "Você atingiu o limite de 200 vendas grátis! A partir de agora, você terá que pagar para continuar vendendo!");
         alert.showAndWait();
     }
 
     @FXML
-    private void btnAddPedidoOnAction(ActionEvent event) {
-        JavaFXTeste.abrirTela("CadastroPedido");
+    private void addPedidoOnAction(ActionEvent event) {
+        WindowManager.openWindow("CadastroPedido");
+    }
+
+    @FXML
+    private void pesqPedidoOnAction(ActionEvent event) {
+        WindowManager.openWindow("PesquisaPedido");
     }
 
     public void incrementarContador(int quantidade) {
-        int vendidas = Integer.parseInt(varVendidasTotal.getText());
-        vendidas += quantidade;
-        varVendidasTotal.setText(String.valueOf(vendidas));
+        int vendidasTotal = Integer.parseInt(varVendidasTotal.getText());
+        int vendidasHoje = Integer.parseInt(varVendidasHoje.getText());
+        vendidasTotal += quantidade;
+        vendidasHoje += quantidade;
+        varVendidasTotal.setText(String.valueOf(vendidasTotal));
+        varVendidasHoje.setText(String.valueOf(vendidasHoje));
     }
-    
+
+    @FXML
+    private void sairOnAction(ActionEvent event) {
+        WindowManager.closeAllWindows();
+        Platform.exit();
+    }
 }

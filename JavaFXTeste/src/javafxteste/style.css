@@ -1,26 +1,72 @@
-.button{
+/* Geral */
+
+.background {
+    -fx-background-color: #D5C5B7 ;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 80% 80%;
-    -fx-background-color: rgb(145, 145, 145);
-    -fx-background-radius: 10;
-    -fx-cursor: hand;
+    -fx-background-size: cover;
 }
 
-.button:hover{
-    -fx-background-color: linear-gradient(#b9b9b9, #9b9999);
-    -fx-translate-y: -2px;
-    -fx-translate-x: -2px;
-    -fx-text-shadow: 1px 1px 1px;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.5) , 5, 0.0 , 0 , 1 );
+.titulo {
+    -fx-font-weight: bold;
+    -fx-font-size: 45px;
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: #fd0000;
 }
 
-.button:pressed{
-    -fx-background-color: linear-gradient(#5f5f5f, #838383);
-    -fx-translate-y: 2px;
-    -fx-translate-x: 2px;
-    -fx-text-shadow: 1px 1px 1px;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.5) , 5, 0.0 , 0 , 1 );
+/* Tela Principal */
+.menu-bar {
+    -fx-background-color: #FFA500;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: #fd0000;
+}
+
+.menu-item {
+    -fx-background-color: #FFA500;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: #fd0000;
+}
+
+.menu-item:hover {
+    -fx-background-color: #FFD700;
+}
+
+#user_label {
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: #fd0000;
+}
+
+.btn_tela_principal {
+    -fx-background-color: #FFA500;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: #fd0000;
+    -fx-border-color: #fd0000;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 55px;
+}
+
+.btn_tela_principal:hover {
+    -fx-background-color: #FFD700;
+}
+
+.btn_tela_principal:pressed {
+    -fx-background-color: #a88f00;
+}
+
+#btn_cad_produto{
+    -fx-background-image: url("../images/add-produto.png");
 }
 
 #btn_cad_cliente{
@@ -43,18 +89,21 @@
     -fx-background-image: url("../images/sair.png");
 }
 
-.background {
-    -fx-background-color: rgba(255, 255, 255, 0.37);
-    -fx-background-image: url("../images/backgroundw.jpg");
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-    -fx-background-size: cover;
+.lbl_btn_principal {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: #fd0000;
 }
 
-.titulo {
+.contador_vendidas {
     -fx-font-weight: bold;
-    -fx-font-size: 26px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-fill: #fd0000;
 }
+
+/* Tela Cadastro de Pedido */
 
 .campo {
     -fx-font-weight: bold;
@@ -64,3 +113,4 @@
     -fx-padding: 5px;
     -fx-border-radius: 5px 5px 0px 0px;
 }
+
